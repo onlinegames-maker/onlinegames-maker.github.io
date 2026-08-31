@@ -1,0 +1,276 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5qb7kr on Basket Rondom for free</title>
+<meta name="description" content="5qb7kr on Basket Rondom for free">
+<meta name="robots" content="noindex, nofollow">
+<style>
+
+html,
+body{
+    margin:0;
+    padding:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:#000;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#game-root{
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100%;
+}
+
+#ad-overlay{
+    position:fixed;
+    inset:0;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    background:rgba(0,0,0,0.78);
+    z-index:2147483647;
+    backdrop-filter: blur(2px);
+}
+
+#ad-overlay.show{
+    display:flex;
+}
+
+#ad-box{
+    position:relative;
+    width:min(92vw, 300px);
+    height:250px;
+    max-width:300px;
+    max-height:250px;
+    border-radius:16px;
+    overflow:hidden;
+    background:linear-gradient(135deg, #111827, #1f2937, #0f172a);
+    border:1px solid rgba(255,255,255,0.12);
+    box-shadow:0 20px 60px rgba(0,0,0,0.5);
+}
+
+#ad-content{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:
+        radial-gradient(circle at top left, rgba(59,130,246,0.35), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(168,85,247,0.35), transparent 35%),
+        linear-gradient(135deg, #111827, #1f2937 50%, #0f172a);
+    color:#fff;
+    padding:0;
+    box-sizing:border-box;
+}
+
+#ad-embed{
+    position:relative;
+    width:100%;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    background:transparent;
+}
+
+#ad-embed iframe,
+#ad-embed > iframe{
+    width:100% !important;
+    height:100% !important;
+    max-width:100% !important;
+    max-height:100% !important;
+    border:0;
+    display:block;
+}
+
+.ad-fallback{
+    margin:0;
+    color:#dbeafe;
+    font-size:12px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+}
+
+#ad-tag{
+    position:absolute;
+    top:10px;
+    left:10px;
+    color:#dbeafe;
+    border:1px solid rgb(255, 255, 255);
+    background:rgb(0, 0, 0);
+    border-radius:999px;
+    font-size:10px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    padding:4px 8px;
+    z-index:2;
+}
+
+#skip-ad{
+    position:absolute;
+    right:12px;
+    bottom:12px;
+    border:1px solid rgb(255, 255, 255);
+    background:rgb(0, 0, 0);
+    color:#fff;
+    border-radius:999px;
+    padding:8px 14px;
+    font-size:0.78rem;
+    font-weight:700;
+    cursor:pointer;
+    transition:opacity 0.2s ease, transform 0.2s ease;
+}
+
+#skip-ad:disabled{
+    opacity:1.55;
+    cursor:not-allowed;
+}
+
+#skip-ad:not(:disabled):hover{
+    transform:translateY(-1px);
+}
+
+@media (max-width: 480px){
+    #ad-box{
+        width:min(92vw, 340px);
+        height:min(74vw, 240px);
+    }
+
+    #ad-content{
+        padding:18px 12px;
+    }
+}
+
+</style>
+
+<script src="../../games.js"></script>
+
+</head>
+<body>
+
+<div id="game-root"></div>
+
+<div id="ad-overlay" aria-live="polite">
+    <div id="ad-box">
+        <div id="ad-content">
+            <span id="ad-tag">Ad</span>
+            <div id="ad-embed">
+                <script>
+                    window.atOptions = {
+                        'key' : '04335e178383c0a8656a636c2dfdf26f',
+                        'format' : 'iframe',
+                        'height' : 250,
+                        'width' : 300,
+                        'params' : {}
+                    };
+                </script>
+                <script src="https://www.highrevenueformat.com/04335e178383c0a8656a636c2dfdf26f/invoke.js" async></script>
+            </div>
+        </div>
+        <button id="skip-ad" type="button" disabled>Skip Ad (6)</button>
+    </div>
+</div>
+
+<script>
+
+(() => {
+
+    const GAME_ID = "5qb7kr";
+
+    if (!GAME_URLS[GAME_ID]) return;
+
+    const host = document.getElementById("game-root");
+
+    const shadow = host.attachShadow({
+        mode: "closed"
+    });
+
+    const frame = document.createElement("iframe");
+
+    frame.src = GAME_URLS[GAME_ID];
+
+    frame.allowFullscreen = true;
+
+    frame.setAttribute(
+        "allow",
+        "fullscreen; autoplay; encrypted-media; accelerometer; gyroscope"
+    );
+
+    frame.style.cssText = `
+        position:absolute;
+        inset:0;
+        width:100%;
+        height:100%;
+        border:0;
+    `;
+
+    shadow.appendChild(frame);
+
+})();
+
+
+    const adOverlay = document.getElementById("ad-overlay");
+    const skipAdButton = document.getElementById("skip-ad");
+    const autoHideDelay = 30000;
+    const reappearDelay = 300000;
+    let skipTimer = null;
+    let hideTimer = null;
+    let reappearTimer = null;
+
+    function showAd() {
+        adOverlay.classList.add("show");
+        skipAdButton.disabled = true;
+        skipAdButton.textContent = "Skip Ad (6)";
+
+        let remaining = 6;
+        clearInterval(skipTimer);
+        skipTimer = setInterval(() => {
+            remaining -= 1;
+            if (remaining > 0) {
+                skipAdButton.textContent = `Skip Ad (${remaining})`;
+                return;
+            }
+
+            skipAdButton.textContent = "Skip Ad";
+            skipAdButton.disabled = false;
+            clearInterval(skipTimer);
+        }, 1000);
+
+        clearTimeout(hideTimer);
+        hideTimer = setTimeout(() => {
+            hideAd();
+        }, autoHideDelay);
+    }
+
+    function hideAd() {
+        adOverlay.classList.remove("show");
+        clearInterval(skipTimer);
+        clearTimeout(hideTimer);
+        skipAdButton.disabled = true;
+        skipAdButton.textContent = "Skip Ad";
+
+        clearTimeout(reappearTimer);
+        reappearTimer = setTimeout(() => {
+            showAd();
+        }, reappearDelay);
+    }
+
+    skipAdButton.addEventListener("click", () => {
+        if (skipAdButton.disabled) return;
+        hideAd();
+    });
+
+    showAd();
+ 
+
+</script>
+
+</body>
+</html>

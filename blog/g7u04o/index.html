@@ -148,6 +148,29 @@ body{
     }
 }
 
+#ad-box.ad-box--wide{
+    width:min(92vw, 728px);
+    height:90px;
+    max-width:728px;
+    max-height:90px;
+}
+
+#ad-box.ad-box--medium{
+    width:min(92vw, 300px);
+    height:250px;
+    max-width:300px;
+    max-height:250px;
+}
+
+.ad-slot{
+    position:absolute;
+    inset:0;
+    visibility:hidden;
+}
+
+.ad-slot.is-active{
+    visibility:visible;
+}
 </style>
 
 <script src="../../games.js"></script>
@@ -162,16 +185,30 @@ body{
         <div id="ad-content">
             <span id="ad-tag">Ad</span>
             <div id="ad-embed">
-                <script>
-                    window.atOptions = {
-                        'key' : '04335e178383c0a8656a636c2dfdf26f',
-                        'format' : 'iframe',
-                        'height' : 250,
-                        'width' : 300,
-                        'params' : {}
-                    };
-                </script>
-                <script src="https://www.highrevenueformat.com/04335e178383c0a8656a636c2dfdf26f/invoke.js" async></script>
+                <div id="wide-ad-slot" class="ad-slot">
+                    <script>
+                        window.atOptions = {
+                            'key' : '55d3d8ed66cdbf259a4842df51016fe0',
+                            'format' : 'iframe',
+                            'height' : 90,
+                            'width' : 728,
+                            'params' : {}
+                        };
+                    </script>
+                    <script src="https://www.highrevenueformat.com/55d3d8ed66cdbf259a4842df51016fe0/invoke.js"></script>
+                </div>
+                <div id="medium-ad-slot" class="ad-slot">
+                    <script>
+                        window.atOptions = {
+                            'key' : '04335e178383c0a8656a636c2dfdf26f',
+                            'format' : 'iframe',
+                            'height' : 250,
+                            'width' : 300,
+                            'params' : {}
+                        };
+                    </script>
+                    <script src="https://www.highrevenueformat.com/04335e178383c0a8656a636c2dfdf26f/invoke.js"></script>
+                </div>
             </div>
         </div>
         <button id="skip-ad" type="button" disabled>Skip Ad (6)</button>
@@ -217,6 +254,36 @@ body{
 
 
     const adOverlay = document.getElementById("ad-overlay");
+    const adBox = document.getElementById("ad-box");
+    const wideAdSlot = document.getElementById("wide-ad-slot");
+    const mediumAdSlot = document.getElementById("medium-ad-slot");
+    const adVariants = ["wide", "medium"];
+    const adVariantStorageKey = `blog-ad-variant-${window.location.pathname}`;
+    let fallbackAdVariantIndex = 0;
+
+    function setAdVariant(variant) {
+        adBox.classList.remove("ad-box--medium", "ad-box--wide");
+        adBox.classList.add(variant === "medium" ? "ad-box--medium" : "ad-box--wide");
+        wideAdSlot.classList.toggle("is-active", variant === "wide");
+        mediumAdSlot.classList.toggle("is-active", variant === "medium");
+    }
+
+    function getNextAdVariant() {
+        let index = fallbackAdVariantIndex;
+
+        try {
+            const storedIndex = Number(sessionStorage.getItem(adVariantStorageKey));
+            if (Number.isInteger(storedIndex) && storedIndex >= 0) {
+                index = storedIndex;
+            }
+            sessionStorage.setItem(adVariantStorageKey, String(index + 1));
+        } catch (error) {
+            console.warn("Could not persist ad rotation; using in-memory rotation.", error);
+            fallbackAdVariantIndex = index + 1;
+        }
+
+        return adVariants[index % adVariants.length];
+    }
     const skipAdButton = document.getElementById("skip-ad");
     const autoHideDelay = 30000;
     const reappearDelay = 300000;
@@ -225,6 +292,8 @@ body{
     let reappearTimer = null;
 
     function showAd() {
+        const variant = getNextAdVariant();
+        setAdVariant(variant);
         adOverlay.classList.add("show");
         skipAdButton.disabled = true;
         skipAdButton.textContent = "Skip Ad (6)";

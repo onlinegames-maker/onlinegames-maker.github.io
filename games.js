@@ -975,4 +975,5 @@ const GAME_URLS = {
 "jl5ho4py":atob("aHR0cHM6Ly9zaGVydWdhbWVzLm9ubGluZS9jbGFzcy9uYmx6Yml3di8="),
 "gg1mvtfi":atob("aHR0cHM6Ly9zaGVydWdhbWVzLm9ubGluZS9jbGFzcy90eXVvd2h4ci8="),
 "ce1yy1fo":atob("aHR0cHM6Ly9zaGVydWdhbWVzLm9ubGluZS9jbGFzcy9tdnNmb3dteC8="),
+"c54x48b4":atob("aHR0cHM6Ly9zaGVydWdhbWVzLm9ubGluZS9jbGFzcy90Zmd5dWlvcC8="),
 };
